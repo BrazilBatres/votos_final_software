@@ -26,7 +26,8 @@ namespace votos_API.DataAccess.repositories
                 Dpi = newVoto.Dpi,
                 FechaHora = newVoto.FechaHora,
                 IpOrigen = newVoto.IpOrigen,
-                EsFraudulento = newVoto.EsFraudulento
+                EsFraudulento = newVoto.EsFraudulento,
+                Nulo = newVoto.Nulo
             };
             _context.Votos.Add(voto);
             await _context.SaveChangesAsync();

@@ -21,8 +21,15 @@ CREATE TABLE voto (
   dpi VARCHAR(13) NOT NULL,
   fecha_hora DATETIME NOT NULL,
   ip_origen VARCHAR(45) NOT NULL,
+  nulo TINYINT(1) NOT NULL DEFAULT 0,
   es_fraudulento TINYINT(1) NOT NULL DEFAULT 0,
   FOREIGN KEY (candidato_id) REFERENCES candidato(id)
+);
+
+CREATE TABLE proceso_votaciones (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  fecha_inicio DATE NOT NULL,
+  fecha_fin DATE NOT NULL
 );
 
 INSERT INTO candidato (nombre, apellidos, fecha_nacimiento, formacion_profesional, sexo, partido_politico, informacion)
@@ -31,4 +38,6 @@ VALUES ('Juan', 'Pérez', '1990-05-15', 'Licenciado en Economía', 'Masculino', 
 INSERT INTO candidato (nombre, apellidos, fecha_nacimiento, formacion_profesional, sexo, partido_politico, informacion)
 VALUES ('María', 'Gómez', '1985-10-20', 'Abogada', 'Femenino', 'Partido B', 'Abogada especializada en derechos humanos y justicia social.');
 
-SELECT * FROM voto
+SELECT * FROM candidato;
+
+DROP TABLE voto

@@ -18,6 +18,8 @@ public partial class EleccionesContext : DbContext
 
     public virtual DbSet<Candidato> Candidatos { get; set; }
 
+    public virtual DbSet<ProcesoVotacione> ProcesoVotaciones { get; set; }
+
     public virtual DbSet<Voto> Votos { get; set; }
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
@@ -73,6 +75,21 @@ public partial class EleccionesContext : DbContext
                 .HasColumnName("sexo");
         });
 
+        modelBuilder.Entity<ProcesoVotacione>(entity =>
+        {
+            entity.HasKey(e => e.Id).HasName("PRIMARY");
+
+            entity.ToTable("proceso_votaciones");
+
+            entity.Property(e => e.Id).HasColumnName("id");
+            entity.Property(e => e.FechaFin)
+                .HasColumnType("date")
+                .HasColumnName("fecha_fin");
+            entity.Property(e => e.FechaInicio)
+                .HasColumnType("date")
+                .HasColumnName("fecha_inicio");
+        });
+
         modelBuilder.Entity<Voto>(entity =>
         {
             entity.HasKey(e => e.Id).HasName("PRIMARY");
@@ -95,6 +112,9 @@ public partial class EleccionesContext : DbContext
             entity.Property(e => e.IpOrigen)
                 .HasMaxLength(45)
                 .HasColumnName("ip_origen");
+            entity.Property(e => e.Nulo)
+                .HasColumnType("tinyint(1)")
+                .HasColumnName("nulo");
 
             entity.HasOne(d => d.Candidato).WithMany(p => p.Votos)
                 .HasForeignKey(d => d.CandidatoId)

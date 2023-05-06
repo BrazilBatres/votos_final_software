@@ -18,106 +18,18 @@ namespace votos_API.Controllers
     [ApiController]
     public class VotosController : ControllerBase
     {
-        private readonly EleccionesContext _context;
-
-        public VotosController()
-        {
-            _context = new EleccionesContext();
-        }
-
-        // GET: api/Votoes
-        [HttpGet]
-        public async Task<ActionResult<IEnumerable<Voto>>> GetVotos()
-        {
-          if (_context.Votos == null)
-          {
-              return NotFound();
-          }
-            return await _context.Votos.ToListAsync();
-        }
-
-        // GET: api/Votoes/5
-        [HttpGet("{id}")]
-        public async Task<ActionResult<Voto>> GetVoto(int id)
-        {
-          if (_context.Votos == null)
-          {
-              return NotFound();
-          }
-            var voto = await _context.Votos.FindAsync(id);
-
-            if (voto == null)
-            {
-                return NotFound();
-            }
-
-            return voto;
-        }
-
-        // PUT: api/Votoes/5
-        // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
-        [HttpPut("{id}")]
-        public async Task<IActionResult> PutVoto(int id, Voto voto)
-        {
-            if (id != voto.Id)
-            {
-                return BadRequest();
-            }
-
-            _context.Entry(voto).State = EntityState.Modified;
-
-            try
-            {
-                await _context.SaveChangesAsync();
-            }
-            catch (DbUpdateConcurrencyException)
-            {
-                if (!VotoExists(id))
-                {
-                    return NotFound();
-                }
-                else
-                {
-                    throw;
-                }
-            }
-
-            return NoContent();
-        }
+        
 
         // POST: api/Votoes
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
-        [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
+        //PÚBLICO
         public async Task<ActionResult<string>> PostVoto(IVotoBusiness bs, clsNewVoto newVoto)
         {
             await bs.postVoto(newVoto).ConfigureAwait(false);
             return Ok(newVoto);
         }
 
-        // DELETE: api/Votoes/5
-        [HttpDelete("{id}")]
-        public async Task<IActionResult> DeleteVoto(int id)
-        {
-            if (_context.Votos == null)
-            {
-                return NotFound();
-            }
-            var voto = await _context.Votos.FindAsync(id);
-            if (voto == null)
-            {
-                return NotFound();
-            }
-
-            _context.Votos.Remove(voto);
-            await _context.SaveChangesAsync();
-
-            return NoContent();
-        }
-
-        private bool VotoExists(int id)
-        {
-            return (_context.Votos?.Any(e => e.Id == id)).GetValueOrDefault();
-        }
+        
     }
 }

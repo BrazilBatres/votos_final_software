@@ -11,5 +11,6 @@
         public string IpOrigen { get; set; } = null!;
 
         public sbyte EsFraudulento { get; set; }
+        public sbyte Nulo { get; set; }
     }
 }
