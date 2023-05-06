@@ -1,9 +1,9 @@
 ﻿using votos_API.DataAccess.models;
-using votos_API.Models.voto;
+using votos_API.Models.candidato;
 namespace votos_API.DataAccess.interfaces
 {
-    public interface IVotoRepository
+    public interface ICandidatoRepository
     {
-        Task addVoto(clsNewVoto newVoto);
+        Task addCandidato(clsNewCandidato newCandidato);
     }
 }

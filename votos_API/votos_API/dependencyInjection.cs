@@ -53,6 +53,9 @@ namespace votos_API
             builder.Register(c => new clsVotoRepository(new EleccionesContext()))
             .InstancePerDependency()
           .As<IVotoRepository>();
+            builder.Register(c => new clsCandidatoRepository(new EleccionesContext()))
+            .InstancePerDependency()
+          .As<ICandidatoRepository>();
             #endregion
 
             //#region "Non-Relational Repositories"
@@ -73,6 +76,9 @@ namespace votos_API
             builder.Register(c => new clsVotoBusiness(c.Resolve<IVotoRepository>()))
                    .InstancePerDependency()
                    .As<IVotoBusiness>();
+            builder.Register(c => new clsCandidatoBusiness(c.Resolve<ICandidatoRepository>()))
+                   .InstancePerDependency()
+                   .As<ICandidatoBusiness>();
             #endregion
         }
     }

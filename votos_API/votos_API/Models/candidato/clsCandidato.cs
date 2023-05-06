@@ -1,17 +1,21 @@
-﻿namespace votos_API.Models.voto
+﻿namespace votos_API.Models.candidato
 {
-    public sealed class clsVoto
+    public sealed class clsCandidato
     {
         public int Id { get; set; }
 
-        public int CandidatoId { get; set; }
+        public string Nombre { get; set; } = null!;
 
-        public string Dpi { get; set; } = null!;
+        public string Apellidos { get; set; } = null!;
 
-        public DateTime FechaHora { get; set; }
+        public DateTime FechaNacimiento { get; set; }
 
-        public string IpOrigen { get; set; } = null!;
+        public string FormacionProfesional { get; set; } = null!;
 
-        public sbyte EsFraudulento { get; set; }
+        public string Sexo { get; set; } = null!;
+
+        public string PartidoPolitico { get; set; } = null!;
+
+        public string? Informacion { get; set; }
     }
 }

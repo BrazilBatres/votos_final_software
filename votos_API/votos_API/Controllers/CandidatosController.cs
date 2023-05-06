@@ -5,8 +5,11 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using votos_API.Business.interfaces;
 using votos_API.DataAccess.common;
 using votos_API.DataAccess.models;
+using votos_API.Models.candidato;
+using votos_API.Models.voto;
 
 namespace votos_API.Controllers
 {
@@ -84,16 +87,10 @@ namespace votos_API.Controllers
         // POST: api/Candidatoes
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
-        public async Task<ActionResult<Candidato>> PostCandidato(Candidato candidato)
+        public async Task<ActionResult<Candidato>> PostCandidato(ICandidatoBusiness bs, clsNewCandidato newCandidato)
         {
-          if (_context.Candidatos == null)
-          {
-              return Problem("Entity set 'EleccionesContext.Candidatos'  is null.");
-          }
-            _context.Candidatos.Add(candidato);
-            await _context.SaveChangesAsync();
-
-            return CreatedAtAction("GetCandidato", new { id = candidato.Id }, candidato);
+            await bs.postCandidato(newCandidato).ConfigureAwait(false);
+            return Ok(newCandidato);
         }
 
         // DELETE: api/Candidatoes/5
