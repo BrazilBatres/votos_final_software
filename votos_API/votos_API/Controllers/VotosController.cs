@@ -9,6 +9,8 @@ using votos_API.DataAccess.common;
 using votos_API.DataAccess.models;
 using votos_API.Business.interfaces;
 using votos_API.Models.voto;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Authorization;
 
 namespace votos_API.Controllers
 {
@@ -86,6 +88,7 @@ namespace votos_API.Controllers
         // POST: api/Votoes
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
+        [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
         public async Task<ActionResult<string>> PostVoto(IVotoBusiness bs, clsNewVoto newVoto)
         {
             await bs.postVoto(newVoto).ConfigureAwait(false);

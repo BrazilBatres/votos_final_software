@@ -290,3 +290,4 @@ D:\UNIVERSIDAD\2023 CICLO 1\INGENIERÍA DE SOFTWARE II\FINAL\votos_final_softwar
 D:\UNIVERSIDAD\2023 CICLO 1\INGENIERÍA DE SOFTWARE II\FINAL\votos_final_software\votos_API\votos_API\bin\Debug\net7.0\Autofac.Integration.AspNetCore.Multitenant.dll
 D:\UNIVERSIDAD\2023 CICLO 1\INGENIERÍA DE SOFTWARE II\FINAL\votos_final_software\votos_API\votos_API\bin\Debug\net7.0\Autofac.Extensions.DependencyInjection.dll
 D:\UNIVERSIDAD\2023 CICLO 1\INGENIERÍA DE SOFTWARE II\FINAL\votos_final_software\votos_API\votos_API\bin\Debug\net7.0\Autofac.Multitenant.dll
+D:\UNIVERSIDAD\2023 CICLO 1\INGENIERÍA DE SOFTWARE II\FINAL\votos_final_software\votos_API\votos_API\bin\Debug\net7.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
